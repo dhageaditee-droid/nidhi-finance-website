@@ -157,81 +157,114 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* 4 Metric KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* 6 Metric KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         
-        {/* Total Enquiries */}
-        <div className="bg-slate-950/90 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
-              Total Enquiries
-            </span>
-            <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              <MessageSquare className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="text-3xl font-black text-white">
-            {totalEnquiries}
-          </div>
-          <div className="text-[11px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
-            <span>Captured via Website</span>
-            <Link to="/admin/enquiries" className="text-blue-400 hover:underline">View &rarr;</Link>
-          </div>
-        </div>
-
         {/* Total Applications */}
-        <div className="bg-slate-950/90 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
-              Loan Applications
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              Total Applications
             </span>
-            <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
               <FileText className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-3xl font-black text-white">
+          <div className="text-2xl sm:text-3xl font-black text-white">
             {totalApplications}
           </div>
-          <div className="text-[11px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
-            <span>Active Pipeline</span>
-            <Link to="/admin/applications" className="text-blue-400 hover:underline">Manage &rarr;</Link>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <span>Overall Pipeline</span>
           </div>
         </div>
 
-        {/* Pending & Review */}
-        <div className="bg-slate-950/90 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
-              Pending & Review
+        {/* New / Under Review */}
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              New / In Review
             </span>
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <TrendingUp className="w-4 h-4" />
+            </div>
+          </div>
+          <div className="text-2xl sm:text-3xl font-black text-indigo-400">
+            {underReviewCount}
+          </div>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <span>Under Assessment</span>
+          </div>
+        </div>
+
+        {/* Pending Applications */}
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              Pending
+            </span>
+            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
               <Clock className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-3xl font-black text-amber-400">
-            {pendingCount + underReviewCount}
+          <div className="text-2xl sm:text-3xl font-black text-amber-400">
+            {pendingCount}
           </div>
-          <div className="text-[11px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
-            <span>{pendingCount} Pending • {underReviewCount} Under Review</span>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <span>Awaiting Action</span>
           </div>
         </div>
 
-        {/* Completed / Approved */}
-        <div className="bg-slate-950/90 p-5 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
-              Approved Applications
+        {/* Approved Applications */}
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              Approved
             </span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-3xl font-black text-emerald-400">
+          <div className="text-2xl sm:text-3xl font-black text-emerald-400">
             {approvedCount}
           </div>
-          <div className="text-[11px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
-            <span>Sanction ready</span>
-            <span className="text-rose-400">{rejectedCount} Rejected</span>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <span>Sanctions Ready</span>
+          </div>
+        </div>
+
+        {/* Rejected Applications */}
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              Rejected
+            </span>
+            <div className="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+              <AlertCircle className="w-4 h-4" />
+            </div>
+          </div>
+          <div className="text-2xl sm:text-3xl font-black text-rose-400">
+            {rejectedCount}
+          </div>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <span>Ineligible / Closed</span>
+          </div>
+        </div>
+
+        {/* Total Enquiries */}
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+              Enquiries
+            </span>
+            <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+              <MessageSquare className="w-4 h-4" />
+            </div>
+          </div>
+          <div className="text-2xl sm:text-3xl font-black text-purple-300">
+            {totalEnquiries}
+          </div>
+          <div className="text-[10px] text-slate-500 mt-2 flex items-center justify-between pt-2 border-t border-slate-900">
+            <Link to="/admin/enquiries" className="text-purple-400 hover:underline">View Enquiries &rarr;</Link>
           </div>
         </div>
 

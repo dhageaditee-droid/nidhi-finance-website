@@ -1,8 +1,9 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+﻿import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
+import ProtectedRoute from './components/admin/ProtectedRoute';
 
 // Public Pages
 import Home from './pages/Home';
@@ -31,7 +32,7 @@ export default function App() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-600 selection:text-white">
       <ScrollToTop />
 
       {/* Show Public Navbar and Floating Actions only on public routes */}
@@ -53,15 +54,19 @@ export default function App() {
           {/* Admin Login Route */}
           <Route path="/admin/login" element={<AdminLogin />} />
 
-          {/* Admin Dashboard Nested Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="applications" element={<Applications />} />
-            <Route path="enquiries" element={<Enquiries />} />
-            <Route path="customers" element={<Customers />} />
-            <Route path="services" element={<ServicesManagement />} />
-            <Route path="testimonials" element={<TestimonialsManagement />} />
-            <Route path="settings" element={<Settings />} />
+          {/* Protected Admin Routes */}
+          <Route path="/admin" element={<ProtectedRoute />}>
+            <Route element={<AdminLayout />}>
+              <Route index element={<Navigate to="/admin/dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="applications" element={<Applications />} />
+              <Route path="enquiries" element={<Enquiries />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="services" element={<ServicesManagement />} />
+              <Route path="testimonials" element={<TestimonialsManagement />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+            </Route>
           </Route>
 
           {/* Catch-all fallback route */}

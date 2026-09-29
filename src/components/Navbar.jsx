@@ -75,7 +75,7 @@ export default function Navbar() {
             <span className="text-slate-600 hidden md:inline">|</span>
 
             <Link 
-              to="/admin" 
+              to="/admin/login" 
               className="text-slate-400 hover:text-white transition-colors text-[11px] hidden md:inline-flex items-center gap-1"
             >
               <ShieldCheck className="w-3 h-3 text-emerald-400" />

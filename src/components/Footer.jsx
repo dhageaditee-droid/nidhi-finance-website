@@ -204,7 +204,7 @@ export default function Footer() {
             <span>•</span>
             <Link to="/contact" className="hover:text-slate-300 transition-colors">Contact</Link>
             <span>•</span>
-            <Link to="/admin" className="hover:text-amber-400 transition-colors font-medium">Admin Portal</Link>
+            <Link to="/admin/login" className="hover:text-amber-400 transition-colors font-medium">Admin Portal</Link>
           </div>
         </div>
 
