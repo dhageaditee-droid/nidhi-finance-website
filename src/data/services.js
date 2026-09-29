@@ -1,4 +1,4 @@
-﻿export const serviceCategories = [
+export const serviceCategories = [
   { id: 'insurance', name: 'Insurance' },
   { id: 'loans', name: 'Loans' },
   { id: 'investment', name: 'Investment' }

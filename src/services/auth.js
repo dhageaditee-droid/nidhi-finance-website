@@ -1,4 +1,4 @@
-﻿// src/services/auth.js
+// src/services/auth.js
 const AUTH_STORAGE_KEY = 'nidhi_admin_session';
 
 /**

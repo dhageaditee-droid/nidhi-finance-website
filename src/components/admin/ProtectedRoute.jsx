@@ -1,4 +1,4 @@
-﻿// src/components/admin/ProtectedRoute.jsx
+// src/components/admin/ProtectedRoute.jsx
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { isAuthenticated } from '../../services/auth';
 
