@@ -40,22 +40,22 @@ export default function Hero() {
 
             {/* Subheading */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-              Nidhi Finance provides transparent and customer-focused solutions across <strong>Loans</strong>, <strong>Insurance</strong>, and <strong>Investment Plans</strong> designed to support your personal and business goals.
+              Nidhi Finance provides trusted and transparent financial solutions across <strong>Insurance Protection</strong>, <strong>Low-Interest Loans</strong>, and <strong>Wealth Investments</strong> crafted to safeguard and elevate your future.
             </p>
 
             {/* Location & Trust Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-slate-200">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Mediclaim, Term Life, Bike, Car & Commercial Insurance</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Home, Personal, Car, Old Vehicle & Business Loans</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Mediclaim, Term & Vehicle Insurance</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Mutual Funds, SIP Plans & Fixed Deposits</span>
+                <span>Mutual Funds, SIP Plans, Fixed Deposits & Pension</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
@@ -114,6 +114,31 @@ export default function Hero() {
 
                 {/* Service Snapshot Chips for 3 categories */}
                 <div className="space-y-3">
+                  {/* 1. Insurance */}
+                  <Link
+                    to="/services/mediclaim"
+                    className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 border border-emerald-600/30 hover:border-emerald-500/60 transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                        <HeartPulse className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors flex items-center gap-1.5">
+                          <span>Insurance</span>
+                          <span className="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded font-bold uppercase">#1 Priority</span>
+                        </div>
+                        <div className="text-xs text-slate-400">
+                          Mediclaim, Term, Vehicle & Commercial Fleet
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">
+                      Protection
+                    </span>
+                  </Link>
+
+                  {/* 2. Loans */}
                   <Link
                     to="/services/home-loans"
                     className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/50 transition-all group"
@@ -136,28 +161,7 @@ export default function Hero() {
                     </span>
                   </Link>
 
-                  <Link
-                    to="/services/mediclaim"
-                    className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/50 transition-all group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
-                        <HeartPulse className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                          Insurance
-                        </div>
-                        <div className="text-xs text-slate-400">
-                          Mediclaim, Term, Vehicle & Commercial Fleet
-                        </div>
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">
-                      Protection
-                    </span>
-                  </Link>
-
+                  {/* 3. Investment */}
                   <Link
                     to="/services/sip-plans"
                     className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/50 transition-all group"

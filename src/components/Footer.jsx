@@ -61,7 +61,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Loans */}
+          {/* Col 2: Insurance (#1 Priority) */}
+          <div className="space-y-3">
+            <h4 className="text-white text-sm font-bold tracking-wide flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Insurance
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link to="/services/mediclaim" className="text-slate-400 hover:text-white transition-colors">
+                  Mediclaim
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/term-insurance-plans" className="text-slate-400 hover:text-white transition-colors">
+                  Term Insurance Plans
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/bike-car-insurance" className="text-slate-400 hover:text-white transition-colors">
+                  Bike & Car Insurance
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/commercial-vehicle-insurance" className="text-slate-400 hover:text-white transition-colors">
+                  Commercial Vehicle Insurance
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Loans (#2 Priority) */}
           <div className="space-y-3">
             <h4 className="text-white text-sm font-bold tracking-wide flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-blue-400"></span>
@@ -91,36 +121,6 @@ export default function Footer() {
               <li>
                 <Link to="/services/business-loans" className="text-slate-400 hover:text-white transition-colors">
                   Business Loans
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Insurance */}
-          <div className="space-y-3">
-            <h4 className="text-white text-sm font-bold tracking-wide flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-              Insurance
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/services/mediclaim" className="text-slate-400 hover:text-white transition-colors">
-                  Mediclaim
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/term-insurance-plans" className="text-slate-400 hover:text-white transition-colors">
-                  Term Insurance Plans
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/commercial-vehicle-insurance" className="text-slate-400 hover:text-white transition-colors">
-                  Commercial Vehicle Insurance
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/bike-car-insurance" className="text-slate-400 hover:text-white transition-colors">
-                  Bike & Car Insurance
                 </Link>
               </li>
             </ul>

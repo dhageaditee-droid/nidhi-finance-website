@@ -1,11 +1,133 @@
-export const serviceCategories = [
-  { id: 'loans', name: 'Loans' },
+﻿export const serviceCategories = [
   { id: 'insurance', name: 'Insurance' },
+  { id: 'loans', name: 'Loans' },
   { id: 'investment', name: 'Investment' }
 ];
 
 export const services = [
-  // ================= LOANS =================
+  // ================= 1. INSURANCE (PRIORITY #1) =================
+  {
+    id: "mediclaim",
+    name: "Mediclaim",
+    category: "Insurance",
+    categorySlug: "insurance",
+    shortDescription: "Comprehensive health insurance and cashless hospitalization cover for individuals and families against rising medical costs.",
+    tagline: "Protect your family's health and savings against medical emergencies.",
+    icon: "HeartPulse",
+    badge: "Health Protection",
+    interestRateRange: "Affordable Premiums",
+    tenureRange: "Annual / Multi-Year",
+    maxAmount: "₹5L to ₹1 Crore Cover",
+    processingTime: "Instant Policy",
+    keyBenefits: [
+      "Cashless hospitalization across thousands of network hospitals",
+      "Covers pre and post-hospitalization medical expenses",
+      "No Claim Bonus (NCB) benefits and annual free health checkups",
+      "Tax deduction benefits under Section 80D"
+    ],
+    overview: "Medical emergencies can deplete family savings rapidly. Our mediclaim advisory helps you select comprehensive family floater and individual health covers from leading insurers.",
+    eligibilityCriteria: [
+      "Entry age: 18 to 65 years (Children from 90 days)",
+      "Standard health declaration"
+    ],
+    documentsRequired: [
+      "KYC: PAN Card & Aadhaar Card",
+      "Passport size photo of all insured members",
+      "Previous medical records (if any)"
+    ]
+  },
+  {
+    id: "term-insurance-plans",
+    name: "Term Insurance Plans",
+    category: "Insurance",
+    categorySlug: "insurance",
+    shortDescription: "High-cover life insurance protection providing guaranteed financial security to your family at highly affordable premium rates.",
+    tagline: "Secure your family's financial future with high life coverage.",
+    icon: "ShieldCheck",
+    badge: "Family Security",
+    interestRateRange: "Low Premiums",
+    tenureRange: "Up to Age 85",
+    maxAmount: "₹25L to ₹5 Crore Sum",
+    processingTime: "Quick Issuance",
+    keyBenefits: [
+      "High sum assured coverage at economical monthly or annual premiums",
+      "Critical illness and accidental death rider options",
+      "Tax exemption benefits under Section 80C and 10(10D)",
+      "Complete financial peace of mind for your dependents"
+    ],
+    overview: "Term life insurance is the purest form of risk protection. We help you compare top IRDAI-approved insurance providers to get the highest sum assured at the lowest premium.",
+    eligibilityCriteria: [
+      "Age: 18 to 65 years",
+      "Salaried or self-employed with steady annual income"
+    ],
+    documentsRequired: [
+      "KYC (PAN, Aadhaar, Age Proof)",
+      "Income Proof (Salary Slips / Form 16 / ITR)",
+      "Medical checkup (arranged if required by insurer)"
+    ]
+  },
+  {
+    id: "bike-car-insurance",
+    name: "Bike & Car Insurance",
+    category: "Insurance",
+    categorySlug: "insurance",
+    shortDescription: "Instant comprehensive and third-party insurance for two-wheelers, scooters, and private four-wheelers.",
+    tagline: "Instant policy issuance with maximum No-Claim Bonus (NCB).",
+    icon: "ShieldAlert",
+    badge: "Motor Protection",
+    interestRateRange: "Best Market Rates",
+    tenureRange: "1 to 3 Years",
+    maxAmount: "Vehicle IDV Based",
+    processingTime: "Instant 5-Min Policy",
+    keyBenefits: [
+      "Zero-Depreciation (Bumper to Bumper) and Engine Protect add-ons",
+      "Instant paperless policy generation and renewal",
+      "Transfer up to 50% existing No Claim Bonus (NCB)",
+      "24x7 Roadside Assistance (RSA) and cashless garage network"
+    ],
+    overview: "Get your two-wheeler or private car insured within minutes. We compare top insurance companies to get you the lowest premium with maximum add-on covers.",
+    eligibilityCriteria: [
+      "Valid vehicle registration certificate (RC)",
+      "Owner driving license"
+    ],
+    documentsRequired: [
+      "Vehicle RC Copy",
+      "Previous Insurance Policy copy",
+      "Owner KYC details"
+    ]
+  },
+  {
+    id: "commercial-vehicle-insurance",
+    name: "Commercial Vehicle Insurance",
+    category: "Insurance",
+    categorySlug: "insurance",
+    shortDescription: "Comprehensive insurance coverage for goods vehicles, trucks, buses, tempos, taxis, and commercial transport fleets.",
+    tagline: "Complete risk coverage for your commercial transport assets.",
+    icon: "Truck",
+    badge: "Commercial Fleet",
+    interestRateRange: "Competitive Quotes",
+    tenureRange: "1 Year Annual Renewal",
+    maxAmount: "Vehicle IDV Based",
+    processingTime: "Instant Renewal",
+    keyBenefits: [
+      "Mandatory Third-Party Liability plus Own Damage (OD) protection",
+      "Coverage against accidents, theft, fire, and natural calamities",
+      "Fast claim settlement assistance and towing support",
+      "Fleet discounts for commercial fleet operators"
+    ],
+    overview: "Keep your commercial vehicles compliant and safeguarded against road mishaps, goods damage, and third-party liabilities with quick policy renewals.",
+    eligibilityCriteria: [
+      "Registered commercial vehicle owner / fleet transport company",
+      "Valid vehicle RC and commercial permit"
+    ],
+    documentsRequired: [
+      "Vehicle RC Copy and Commercial Permit",
+      "Previous year policy copy",
+      "Fitness & Pollution (PUC) certificate"
+    ]
+  },
+
+  // ================= 2. LOANS (PRIORITY #2) =================
   {
     id: "home-loans",
     name: "Home Loans",
@@ -98,9 +220,9 @@ export const services = [
       "Minimum annual income of ₹2,50,000+"
     ],
     documentsRequired: [
-      "KYC (PAN & Aadhaar)",
-      "Income Proof (Salary Slips / Form 16 / ITR)",
-      "Bank Statement (6 months)",
+      "KYC Documents (PAN, Aadhaar)",
+      "Income Proof (3 months salary slips / 2 yrs ITR)",
+      "6 Months Bank Statement",
       "Vehicle Proforma Invoice from authorized dealership"
     ]
   },
@@ -109,31 +231,31 @@ export const services = [
     name: "Old Vehicles Loans",
     category: "Loans",
     categorySlug: "loans",
-    shortDescription: "Used and pre-owned vehicle loans for second-hand cars, commercial vehicles, and utility vehicles.",
-    tagline: "Affordable financing for certified pre-owned & used vehicles.",
+    shortDescription: "Affordable pre-owned and used vehicle loans for 2-wheelers, 4-wheelers, and commercial pre-owned vehicles with simple evaluation.",
+    tagline: "Drive certified pre-owned vehicles with accessible financing.",
     icon: "Truck",
-    badge: "Pre-Owned",
+    badge: "Pre-Owned Loans",
     interestRateRange: "From 11.5% p.a.*",
     tenureRange: "12 to 60 Months",
-    maxAmount: "Up to 80% Valuation",
-    processingTime: "2 - 3 Days*",
+    maxAmount: "Up to 80% of Valuation",
+    processingTime: "24 - 48 Hours*",
     keyBenefits: [
-      "Financing available up to 80% of vehicle certified valuation",
-      "Support for private cars, used commercial tempos & trucks",
-      "Easy vehicle RC transfer assistance and documentation",
-      "Flexible tenures suited to used vehicle age"
+      "Financing for used cars, commercial vehicles, and utility vehicles",
+      "Fair market vehicle valuation assistance",
+      "Smooth RC transfer and hypothecation coordination",
+      "Flexible repayment options"
     ],
-    overview: "Looking to buy a reliable pre-owned car or commercial vehicle? Nidhi Finance provides quick loan valuation and financing solutions for used four-wheelers.",
+    overview: "Purchasing a reliable second-hand car or commercial vehicle? Nidhi Finance provides quick loan approvals and title verification.",
     eligibilityCriteria: [
-      "Age: 21 to 62 years",
-      "Vehicle age should not exceed lender threshold at maturity",
-      "Stable income and residential address proof"
+      "Age: 21 to 65 years",
+      "Vehicle age typically within 10 years at loan maturity",
+      "Clear vehicle RC and fitness record"
     ],
     documentsRequired: [
-      "KYC (PAN & Aadhaar Card)",
+      "KYC (PAN & Aadhaar)",
       "Vehicle RC Copy, Insurance & Fitness Certificate",
-      "Valuation report from certified inspector",
-      "Bank Statement of last 6 months"
+      "Bank Statement (Last 6 months)",
+      "Seller valuation agreement"
     ]
   },
   {
@@ -141,12 +263,12 @@ export const services = [
     name: "Business Loans",
     category: "Loans",
     categorySlug: "loans",
-    shortDescription: "Financial solutions designed to support enterprise growth, working capital, inventory, machinery, and business expansion.",
-    tagline: "Fueling business growth and working capital needs.",
-    icon: "Building2",
-    badge: "MSME Growth",
+    shortDescription: "Empowering small businesses, MSMEs, traders, and entrepreneurs with working capital and business expansion financing.",
+    tagline: "Accelerate your enterprise growth with dedicated business funding.",
+    icon: "Landmark",
+    badge: "Enterprise Growth",
     interestRateRange: "From 12.0% p.a.*",
-    tenureRange: "12 to 84 Months",
+    tenureRange: "12 to 60 Months",
     maxAmount: "Up to ₹1,00,00,000",
     processingTime: "48 - 72 Hours*",
     keyBenefits: [
@@ -169,129 +291,7 @@ export const services = [
     ]
   },
 
-  // ================= INSURANCE =================
-  {
-    id: "mediclaim",
-    name: "Mediclaim",
-    category: "Insurance",
-    categorySlug: "insurance",
-    shortDescription: "Comprehensive health insurance and hospitalization cover for individuals and families against rising medical costs.",
-    tagline: "Protect your family's health and savings against medical emergencies.",
-    icon: "HeartPulse",
-    badge: "Health Protection",
-    interestRateRange: "Affordable Premiums",
-    tenureRange: "Annual / Multi-Year",
-    maxAmount: "₹5L to ₹1 Crore Cover",
-    processingTime: "Instant Policy",
-    keyBenefits: [
-      "Cashless hospitalization across thousands of network hospitals",
-      "Covers pre and post-hospitalization medical expenses",
-      "No Claim Bonus (NCB) benefits and annual free health checkups",
-      "Tax deduction benefits under Section 80D"
-    ],
-    overview: "Medical emergencies can deplete family savings rapidly. Our mediclaim advisory helps you select comprehensive family floater and individual health covers from leading insurers.",
-    eligibilityCriteria: [
-      "Entry age: 18 to 65 years (Children from 90 days)",
-      "Standard health declaration"
-    ],
-    documentsRequired: [
-      "KYC: PAN Card & Aadhaar Card",
-      "Passport size photo of all insured members",
-      "Previous medical records (if any)"
-    ]
-  },
-  {
-    id: "term-insurance-plans",
-    name: "Term Insurance Plans",
-    category: "Insurance",
-    categorySlug: "insurance",
-    shortDescription: "High-cover life insurance protection providing financial security to your family at highly affordable premium rates.",
-    tagline: "Secure your family's financial future with high life coverage.",
-    icon: "ShieldCheck",
-    badge: "Family Security",
-    interestRateRange: "Low Premiums",
-    tenureRange: "Up to Age 85",
-    maxAmount: "₹25L to ₹5 Crore Sum",
-    processingTime: "Quick Issuance",
-    keyBenefits: [
-      "High sum assured coverage at economical monthly or annual premiums",
-      "Critical illness and accidental death rider options",
-      "Tax exemption benefits under Section 80C and 10(10D)",
-      "Complete financial peace of mind for your dependents"
-    ],
-    overview: "Term life insurance is the purest form of risk protection. We help you compare top IRDAI-approved insurance providers to get the highest sum assured at the lowest premium.",
-    eligibilityCriteria: [
-      "Age: 18 to 65 years",
-      "Salaried or self-employed with steady annual income"
-    ],
-    documentsRequired: [
-      "KYC (PAN, Aadhaar, Age Proof)",
-      "Income Proof (Salary Slips / Form 16 / ITR)",
-      "Medical checkup (arranged if required by insurer)"
-    ]
-  },
-  {
-    id: "commercial-vehicle-insurance",
-    name: "Commercial Vehicle Insurance",
-    category: "Insurance",
-    categorySlug: "insurance",
-    shortDescription: "Comprehensive insurance coverage for goods vehicles, trucks, buses, tempos, taxis, and commercial transport fleets.",
-    tagline: "Complete risk coverage for your commercial transport assets.",
-    icon: "Truck",
-    badge: "Commercial Fleet",
-    interestRateRange: "Competitive Quotes",
-    tenureRange: "1 Year Annual Renewal",
-    maxAmount: "Vehicle IDV Based",
-    processingTime: "Instant Renewal",
-    keyBenefits: [
-      "Mandatory Third-Party Liability plus Own Damage (OD) protection",
-      "Coverage against accidents, theft, fire, and natural calamities",
-      "Fast claim settlement assistance and towing support",
-      "Fleet discounts for commercial fleet operators"
-    ],
-    overview: "Keep your commercial vehicles compliant and safeguarded against road mishaps, goods damage, and third-party liabilities with quick policy renewals.",
-    eligibilityCriteria: [
-      "Registered commercial vehicle owner / fleet transport company",
-      "Valid vehicle RC and commercial permit"
-    ],
-    documentsRequired: [
-      "Vehicle RC Copy and Commercial Permit",
-      "Previous year policy copy",
-      "Fitness & Pollution (PUC) certificate"
-    ]
-  },
-  {
-    id: "bike-car-insurance",
-    name: "Bike & Car Insurance",
-    category: "Insurance",
-    categorySlug: "insurance",
-    shortDescription: "Instant comprehensive and third-party insurance for two-wheelers, scooters, and private four-wheelers.",
-    tagline: "Instant policy issuance with maximum No-Claim Bonus (NCB).",
-    icon: "ShieldAlert",
-    badge: "Motor Protection",
-    interestRateRange: "Best Market Rates",
-    tenureRange: "1 to 3 Years",
-    maxAmount: "Vehicle IDV Based",
-    processingTime: "Instant 5-Min Policy",
-    keyBenefits: [
-      "Zero-Depreciation (Bumper to Bumper) and Engine Protect add-ons",
-      "Instant paperless policy generation and renewal",
-      "Transfer up to 50% existing No Claim Bonus (NCB)",
-      "24x7 Roadside Assistance (RSA) and cashless garage network"
-    ],
-    overview: "Get your two-wheeler or private car insured within minutes. We compare top insurance companies to get you the lowest premium with maximum add-on covers.",
-    eligibilityCriteria: [
-      "Valid vehicle registration certificate (RC)",
-      "Owner driving license"
-    ],
-    documentsRequired: [
-      "Vehicle RC Copy",
-      "Previous Insurance Policy copy",
-      "Owner KYC details"
-    ]
-  },
-
-  // ================= INVESTMENT =================
+  // ================= 3. INVESTMENT (PRIORITY #3) =================
   {
     id: "mutual-fund",
     name: "Mutual Fund",

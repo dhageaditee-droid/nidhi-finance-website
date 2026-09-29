@@ -333,20 +333,20 @@ export default function Contact() {
                       onChange={handleChange}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600"
                     >
-                      <optgroup label="── LOANS ──">
+                      <optgroup label="── 1. INSURANCE (PROTECTION) ──">
+                        <option value="Mediclaim">Mediclaim (Health Insurance)</option>
+                        <option value="Term Insurance Plans">Term Insurance Plans</option>
+                        <option value="Bike & Car Insurance">Bike & Car Insurance</option>
+                        <option value="Commercial Vehicle Insurance">Commercial Vehicle Insurance</option>
+                      </optgroup>
+                      <optgroup label="── 2. LOANS ──">
                         <option value="Home Loans">Home Loans</option>
                         <option value="Personal Loans">Personal Loans</option>
                         <option value="Car Loans">Car Loans</option>
                         <option value="Old Vehicles Loans">Old Vehicles Loans</option>
                         <option value="Business Loans">Business Loans</option>
                       </optgroup>
-                      <optgroup label="── INSURANCE ──">
-                        <option value="Mediclaim">Mediclaim (Health Insurance)</option>
-                        <option value="Term Insurance Plans">Term Insurance Plans</option>
-                        <option value="Commercial Vehicle Insurance">Commercial Vehicle Insurance</option>
-                        <option value="Bike & Car Insurance">Bike & Car Insurance</option>
-                      </optgroup>
-                      <optgroup label="── INVESTMENT ──">
+                      <optgroup label="── 3. INVESTMENT ──">
                         <option value="Mutual Fund">Mutual Fund</option>
                         <option value="SIP Plans">SIP Plans</option>
                         <option value="Fix Deposit">Fix Deposit</option>

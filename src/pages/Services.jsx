@@ -55,17 +55,6 @@ export default function Services() {
               All Services ({services.length})
             </button>
             <button
-              onClick={() => setSelectedCategory('loans')}
-              className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                selectedCategory === 'loans'
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-slate-800/90 text-slate-300 hover:bg-slate-700 border border-slate-700'
-              }`}
-            >
-              <Landmark className="w-4 h-4" />
-              <span>Loans ({loanCount})</span>
-            </button>
-            <button
               onClick={() => setSelectedCategory('insurance')}
               className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedCategory === 'insurance'
@@ -75,6 +64,17 @@ export default function Services() {
             >
               <Shield className="w-4 h-4" />
               <span>Insurance ({insuranceCount})</span>
+            </button>
+            <button
+              onClick={() => setSelectedCategory('loans')}
+              className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                selectedCategory === 'loans'
+                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  : 'bg-slate-800/90 text-slate-300 hover:bg-slate-700 border border-slate-700'
+              }`}
+            >
+              <Landmark className="w-4 h-4" />
+              <span>Loans ({loanCount})</span>
             </button>
             <button
               onClick={() => setSelectedCategory('investment')}
