@@ -2,7 +2,7 @@
 const AUTH_STORAGE_KEY = 'nidhi_admin_session';
 
 /**
- * Perform admin login against /api/auth/login or fallback to environment variables
+ * Perform admin login against configured environment variables or defaults
  */
 export async function loginAdmin(username, password) {
   const cleanUsername = username ? username.trim() : '';
@@ -12,37 +12,7 @@ export async function loginAdmin(username, password) {
     return { success: false, message: 'Username and password are required' };
   }
 
-  // 1. Try serverless backend endpoint first
-  try {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: cleanUsername, password: cleanPassword })
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.success && data.token) {
-        saveSession({
-          user: data.user,
-          token: data.token,
-          expiresAt: Date.now() + 24 * 60 * 60 * 1000
-        });
-        return { success: true, user: data.user, token: data.token };
-      }
-    } else if (response.status === 401 || response.status === 400) {
-      const errorData = await response.json().catch(() => ({}));
-      return { 
-        success: false, 
-        message: errorData.message || 'Invalid username or password' 
-      };
-    }
-  } catch (apiError) {
-    // API not reachable (e.g. static local Vite dev or offline), fall through to local verification
-    console.info('API login endpoint unavailable, using secure local client verification.');
-  }
-
-  // 2. Client-side fallback authentication with environment variables
+  // Configured credentials from Vercel / .env environment variables (default: admin / admin123)
   const envUser = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
   const envPass = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123';
 
@@ -55,7 +25,7 @@ export async function loginAdmin(username, password) {
         u: cleanUsername,
         role: 'Administrator',
         iat: Date.now(),
-        exp: Date.now() + 24 * 60 * 60 * 1000
+        exp: Date.now() + 24 * 60 * 60 * 1000 // 24 hours validity
       })
     );
 
@@ -76,7 +46,7 @@ export async function loginAdmin(username, password) {
 
   return {
     success: false,
-    message: 'Invalid username or password. Please try again.'
+    message: 'Invalid username or password. Please verify your credentials.'
   };
 }
 
@@ -131,7 +101,7 @@ export function getAdminUser() {
 export function clearSession() {
   try {
     localStorage.removeItem(AUTH_STORAGE_KEY);
-    localStorage.removeItem('nidhi_admin_auth'); // legacy key
+    localStorage.removeItem('nidhi_admin_auth');
   } catch (err) {
     console.error('Failed to clear admin session:', err);
   }
