@@ -29,15 +29,15 @@ export default function Home() {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold uppercase tracking-wider">
-                <TrendingUp className="w-3.5 h-3.5" />
-                <span>Financial Products Suite</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold uppercase tracking-wider">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>#1 Insurance & Financial Protection Suite</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A192F] tracking-tight">
-                Our Financial Services
+                Insurance, Loans & Investment Solutions
               </h2>
               <p className="text-slate-600 text-base">
-                Discover tailored financing and advisory options crafted to support individual dreams and enterprise growth with competitive terms.
+                Discover comprehensive Insurance Protection (#1), competitive Low-Interest Loans (#2), and disciplined Wealth Investments (#3) tailored for you.
               </p>
             </div>
 

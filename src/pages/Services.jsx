@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import CTA from '../components/CTA';
 import { services } from '../data/services';
@@ -6,24 +7,41 @@ import {
   Briefcase, 
   ShieldCheck, 
   Search, 
-  CheckCircle2,
-  Sparkles,
-  Phone,
-  MessageSquare,
-  Landmark,
-  Shield,
-  TrendingUp
+  CheckCircle2, 
+  Sparkles, 
+  Phone, 
+  MessageSquare, 
+  Landmark, 
+  Shield, 
+  TrendingUp 
 } from 'lucide-react';
 
 export default function Services() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const catParam = searchParams.get('category');
+  const [selectedCategory, setSelectedCategory] = useState(catParam || 'all');
+
+  useEffect(() => {
+    if (catParam) {
+      setSelectedCategory(catParam);
+    }
+  }, [catParam]);
+
+  const handleCategorySelect = (cat) => {
+    setSelectedCategory(cat);
+    if (cat === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: cat });
+    }
+  };
 
   const filteredServices = selectedCategory === 'all'
     ? services
     : services.filter(s => s.categorySlug === selectedCategory);
 
-  const loanCount = services.filter(s => s.categorySlug === 'loans').length;
   const insuranceCount = services.filter(s => s.categorySlug === 'insurance').length;
+  const loanCount = services.filter(s => s.categorySlug === 'loans').length;
   const investmentCount = services.filter(s => s.categorySlug === 'investment').length;
 
   return (
@@ -45,7 +63,7 @@ export default function Services() {
           {/* Category Filter Pills */}
           <div className="pt-6 flex flex-wrap justify-center gap-2.5">
             <button
-              onClick={() => setSelectedCategory('all')}
+              onClick={() => handleCategorySelect('all')}
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedCategory === 'all'
                   ? 'bg-amber-400 text-slate-950 shadow-lg scale-105'
@@ -55,29 +73,31 @@ export default function Services() {
               All Services ({services.length})
             </button>
             <button
-              onClick={() => setSelectedCategory('insurance')}
+              onClick={() => handleCategorySelect('insurance')}
               className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedCategory === 'insurance'
-                  ? 'bg-emerald-600 text-white shadow-lg scale-105'
+                  ? 'bg-emerald-600 text-white shadow-lg scale-105 ring-2 ring-emerald-400/40'
                   : 'bg-slate-800/90 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
-              <Shield className="w-4 h-4" />
+              <Shield className="w-4 h-4 text-emerald-400" />
               <span>Insurance ({insuranceCount})</span>
+              <span className="text-[9px] bg-emerald-400 text-emerald-950 font-black px-1.5 py-0.5 rounded ml-0.5">#1</span>
             </button>
             <button
-              onClick={() => setSelectedCategory('loans')}
+              onClick={() => handleCategorySelect('loans')}
               className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedCategory === 'loans'
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  ? 'bg-blue-600 text-white shadow-lg scale-105 ring-2 ring-blue-400/40'
                   : 'bg-slate-800/90 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
-              <Landmark className="w-4 h-4" />
+              <Landmark className="w-4 h-4 text-blue-400" />
               <span>Loans ({loanCount})</span>
+              <span className="text-[9px] bg-blue-300 text-blue-950 font-black px-1.5 py-0.5 rounded ml-0.5">#2</span>
             </button>
             <button
-              onClick={() => setSelectedCategory('investment')}
+              onClick={() => handleCategorySelect('investment')}
               className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 selectedCategory === 'investment'
                   ? 'bg-amber-500 text-slate-950 shadow-lg scale-105'
