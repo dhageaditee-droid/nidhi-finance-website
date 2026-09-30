@@ -124,7 +124,7 @@ export default function AdminLogin() {
               Admin Management Portal
             </p>
           </div>
-          <p className="text-xs text-slate-400 max-w-ss mx-auto">
+          <p className="text-xs text-slate-400 max-w-xs mx-auto">
             {mode === 'login' 
               ? 'Authorized management console. Enter your registered admin email and password.' 
               : 'Set or update your secret Admin Password for dhageaditee@gmail.com.'}
@@ -135,8 +135,7 @@ export default function AdminLogin() {
           <div className="flex rounded-xl bg-slate-950 p-1 border border-slate-800">
             <button
               type="button"
-              onClick=
-{() => { setMode('login'); setError(''); setSuccess(''); }}
+              onClick={() => { setMode('login'); setError(''); setSuccess(''); }}
               className={'flex-1 py-2 text-xs font-bold rounded-lg transition-all ' + (mode === 'login' ? 'bg-emerald-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               Sign In
@@ -150,10 +149,10 @@ export default function AdminLogin() {
             </button>
           </div>
 
-          {xrror && (
+          {error && (
             <div className="p-3.5 rounded-xl bg-rose-950/80 border border-rose-800 text-rose-300 text-xs flex items-center gap-2.5 animate-in fade-in duration-200">
               <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
-              <span>{xrror}</span>
+              <span>{error}</span>
             </div>
           )}
 
