@@ -4,17 +4,15 @@ import { loginAdmin, isAuthenticated } from '../../services/auth';
 import { 
   ShieldCheck, 
   Lock, 
-  User, 
+  Mail, 
   ArrowRight, 
   AlertCircle,
   Eye,
-  EyeOff,
-  Building,
-  CheckCircle2
+  EyeOff
 } from 'lucide-react';
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
@@ -35,21 +33,21 @@ export default function AdminLogin() {
     e.preventDefault();
     setError('');
 
-    if (!username.trim() || !password.trim()) {
-      setError('Please enter both your Admin Username and Password.');
+    if (!identifier.trim() || !password.trim()) {
+      setError('Please enter your Admin Email/Username and Password.');
       return;
     }
 
     setLoading(true);
 
     try {
-      const result = await loginAdmin(username, password);
+      const result = await loginAdmin(identifier, password);
       
       if (result.success) {
         const destination = location.state?.from?.pathname || '/admin/dashboard';
         navigate(destination, { replace: true });
       } else {
-        setError(result.message || 'Invalid username or password.');
+        setError(result.message || 'Invalid credentials. Please verify your email and password.');
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
@@ -85,7 +83,7 @@ export default function AdminLogin() {
             </p>
           </div>
           <p className="text-xs text-slate-400 max-w-xs mx-auto">
-            Authorized access only. Sign in with your verified administrator credentials.
+            Authorized management console. Enter your registered admin email and password.
           </p>
         </div>
 
@@ -101,17 +99,17 @@ export default function AdminLogin() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             
-            {/* Username Input */}
+            {/* Email / Username Input */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Admin Username</span>
+                <Mail className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Admin Email or Username</span>
               </label>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter username"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                placeholder="Enter your email or username"
                 autoComplete="username"
                 required
                 className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
@@ -131,7 +129,7 @@ export default function AdminLogin() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder="Enter your password"
                   autoComplete="current-password"
                   required
                   className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 pr-10 transition-colors"
