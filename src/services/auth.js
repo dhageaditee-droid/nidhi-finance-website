@@ -48,6 +48,77 @@ export function updateAdminAccount({ email, username, password }) {
 }
 
 /**
+ * Reset / set admin password directly for registered admin email
+ */
+export function resetAdminPassword(email, newPassword) {
+  const cleanEmail = (email || '').trim().toLowerCase();
+  const cleanPass = (newPassword || '').trim();
+
+  if (!cleanEmail || !cleanPass) {
+    return { success: false, message: 'Email and new password are required.' };
+  }
+
+  if (cleanPass.length < 4) {
+    return { success: false, message: 'Password must be at least 4 characters long.' };
+  }
+
+  // Allow reset for authorized admin email
+  const current = getAdminAccount();
+  const allowed = [
+    'dhageaditee@gmail.com',
+    'admin',
+    current.email.toLowerCase(),
+    current.username.toLowerCase()
+  ];
+
+  if (!allowed.includes(cleanEmail)) {
+    return { 
+      success: false, 
+      message: 'This email is not authorized as Admin. Use dhageaditee@gmail.com' 
+    };
+  }
+
+  const updated = {
+    email: cleanEmail.includes('@') ? cleanEmail : current.email,
+    username: 'admin',
+    password: cleanPass,
+    updatedAt: new Date().toISOString()
+  };
+
+  try {
+    localStorage.setItem(ADMIN_ACCOUNT_KEY, JSON.stringify(updated));
+
+    // Auto login after resetting password
+    const sessionToken = btoa(
+      JSON.stringify({
+        u: updated.username,
+        email: updated.email,
+        role: 'Administrator',
+        iat: Date.now(),
+        exp: Date.now() + 24 * 60 * 60 * 1000
+      })
+    );
+
+    const userObj = {
+      username: updated.username,
+      email: updated.email,
+      role: 'Administrator',
+      loginTime: new Date().toISOString()
+    };
+
+    saveSession({
+      user: userObj,
+      token: sessionToken,
+      expiresAt: Date.now() + 24 * 60 * 60 * 1000
+    });
+
+    return { success: true, user: userObj, token: sessionToken };
+  } catch (err) {
+    return { success: false, message: 'Failed to reset password. Please try again.' };
+  }
+}
+
+/**
  * Perform admin login using email/username and password
  */
 export async function loginAdmin(identifier, password) {
